@@ -1,0 +1,32 @@
+<div class="products-container">
+    <div *ngFor="let product of products" class="product-card">
+      <div class="image-gallery">
+        <button class="gallery-nav prev" (click)="prevImage(product)">←</button>
+        <img [src]="product.images[currentImageIndex[product.id]]" [alt]="product.name">
+        <button class="gallery-nav next" (click)="nextImage(product)">→</button>
+      </div>
+      
+      <div class="product-info">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <div class="rating">
+          <span>Рейтинг: {{ product.rating }}/5</span>
+          <div class="stars">
+            <span *ngFor="let star of [1,2,3,4,5]">
+              ⭐
+            </span>
+          </div>
+        </div>
+        <p class="price">{{ product.price }} ₸</p>
+        
+        <div class="share-buttons">
+          <button (click)="viewOnKaspi(product.kaspiLink)" class="share-btn kaspi">
+            Посмотреть на Kaspi
+          </button>
+          <button (click)="shareOnTelegram(product)" class="share-btn telegram">
+            Поделиться в Telegram
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
